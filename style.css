@@ -1,0 +1,158 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@font-face {
+  font-family: "nasa";
+  src: url("nasalization-rg.otf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("aaa.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: #ffffff; */
+}
+
+.card {
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  border-radius: 0.5rem;
+  background-color: #ffffff00;
+  /* max-width: 290px; */
+  width: 95%;
+  /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  background-color: #ffffff00; */
+}
+
+
+
+.header {
+  padding: 1.25rem 1rem 1rem 1rem;
+}
+
+.image {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #e2feee;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  animation: animate 0.6s linear alternate-reverse infinite;
+  transition: 0.6s ease;
+}
+
+.image svg {
+  color: #0afa2a;
+  width: 2rem;
+  height: 2rem;
+}
+
+.content {
+  margin-top: 0.75rem;
+  text-align: left;
+  padding-left: 20px;
+}
+
+.title {
+  color: #066e29;
+  font-size: 2rem;
+
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+
+.message {
+  margin-top: 0.5rem;
+  color: #595b5f;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.actions {
+  margin: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history {
+  display: inline-flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 53px;
+  padding: 0.5rem 1rem;
+  background-color: #1aa06d;
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.track {
+  display: inline-flex;
+  height: 53px;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  color: #242525;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 200;
+  justify-content: center;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid #d1d5db;
+  background-color: #ffffff34;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.track::placeholder {
+  color: #3030305e;
+}
+
+@keyframes animate {
+  from {
+    color: #000000;
+  }
+
+  to {
+    transform: #ffff;
+  }
+}
+
+
+.logo{
+  margin-top: 20px;
+  color: #2425255a;
+  font-size: 16px;
+  span{
+    font-family: nasa;
+    font-size: 22px;
+    animation: animate 1s linear alternate-reverse infinite;
+  }
+}

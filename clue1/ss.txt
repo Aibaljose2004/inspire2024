@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Reader</title>
+</head>
+<body>
+  <h1>QR Code Reader</h1>
+  <video id="video" width="100%" autoplay></video>
+  <canvas id="canvas" style="display: none;"></canvas>
+  <div id="result"></div>
+
+  <script src="jsQR.js"></script>
+  <script>
+    jsQR(...a);
+  </script>
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+      .then(function(stream) {
+        var video = document.getElementById('video');
+        video.srcObject = stream;
+        video.play();
+
+        // Processing frames from the camera
+        var intervalId = setInterval(function() {
+          var canvas = document.getElementById('canvas');
+          var context = canvas.getContext('2d');
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          
+          var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+          var code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code) {
+            // Assuming 'data' contains your stored data
+            var data = {
+              code: code.data
+            };
+            
+            // Check if the scanned QR code matches any data
+            if (data.code === code.data) {
+              // Match found, send success message
+              document.getElementById('result').innerText = "QR Code matched successfully: " + data.code;
+              
+              // Stop the camera stream
+              stream.getTracks().forEach(track => track.stop());
+              
+              // Stop processing frames
+              clearInterval(intervalId);
+            } else {
+              // No match found
+              document.getElementById('result').innerText = "QR Code does not match any data.";
+            }
+          } else {
+            // No QR code detected
+            document.getElementById('result').innerText = "No QR code detected.";
+          }
+        }, 1000); // Adjust the interval as needed
+      })
+      .catch(function(err) {
+        console.error('Error accessing camera:', err);
+      });
+  </script>
+</body>
+</html>
